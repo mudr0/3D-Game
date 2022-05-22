@@ -63,6 +63,11 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Player.GetComponent<HealthManager>().TakeDamage(Damage);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<HealthManager>().TakeDamage(Damage);
+        }
     }
+
+    
 }
