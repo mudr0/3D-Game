@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float _speed = 1f;
+    [SerializeField] GameObject _pauseMenu;
 
     private Vector3 m_Movement;
 
@@ -15,5 +16,11 @@ public class PlayerController : MonoBehaviour
 
         m_Movement.Set(horizontal, 0f, vertical);
         transform.Translate(m_Movement * Time.deltaTime * _speed);
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            _pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }

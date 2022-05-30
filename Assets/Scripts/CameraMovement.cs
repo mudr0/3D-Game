@@ -18,8 +18,10 @@ public class CameraMovement : MonoBehaviour
         _y -= yRot;
         _y = Mathf.Clamp(_y, -60, 60);
 
-        _player.Rotate(new Vector3(0, xRot * MouseSensitivity * 2, 0));
-        _gun.Rotate(new Vector3(-yRot * MouseSensitivity * 2, 0, 0));
-        transform.localRotation = Quaternion.Euler(_y * MouseSensitivity, 0, 0);
+        if(Time.timeScale != 0)
+        {
+            _player.Rotate(new Vector3(0, xRot * MouseSensitivity * 2, 0));
+            transform.localRotation = Quaternion.Euler(_y * MouseSensitivity, 0, 0);
+        }
     }
 }
